@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+	<head lang="en">
+		<meta charset="utf-8">
+		<title>Space Crystal</title>
+		<style>
+			html, body {
+                display:flex;
+                margin:0;
+                padding:0;
+                overflow: hidden; 
+            	background-image:url('./textures/space.png');
+            }
+
+			#menu {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				text-align: center;
+			}
+			
+			button {
+				padding: 25px 30px;
+				margin: 20px;
+				background-color: #03918f;
+				color: #050801;
+				font-size: 20px;
+				font-weight: bold;
+				border: none;
+				border-radius: 5px;
+				letter-spacing: 4px;
+				overflow: hidden;
+				transition: 0.5s;
+				cursor: pointer;
+			}
+
+			button:hover {
+				background: #050801;
+				color: #03918f;
+			}
+
+			.loader {
+				border: 4px solid rgba(255, 255, 255, 0.3);
+				border-top: 4px solid #050801;
+				border-radius: 50%;
+				width: 50px;
+				height: 50px;
+				animation: spin 2s linear infinite;
+			}
+
+			@keyframes spin {
+				0% { transform: rotate(0deg); }
+				100% { transform: rotate(360deg); }
+			}
+			
+			#loading {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				text-align: center;
+			}
+
+			#instructions {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
+			
+			#instructionContainer {
+				text-align: center;
+			}
+
+			.image-box img {
+				width: 20vw; 
+				height: 20vw; 
+				display: block;
+				margin: 0 auto; 
+			}
+
+			.image-box p {
+				margin: 5px 0;
+				color: #e1ebe8;
+				font-size: 20px;
+			}
+
+			.gameState {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: 100vw;
+				height: 100vh;
+				transform: translate(-50%, -50%);
+				text-align: center;
+				background-color: rgba(0, 0, 0, 0.5);
+				color:#22ff00;
+				font-size: 16px;
+			}
+
+			#winMenu {
+				padding-top: 20%;
+				font-size: 32px;
+				color:#22ff00;
+			}
+
+			#lostMenu {
+				padding-top: 20%;
+				font-size: 32px;
+				color:#de0417;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="menu">
+	  		<button id="startButton">Start</button>
+			<button id="instructionButton">Instructions</button>
+		</div>
+		<div id="loading" style="display: none;">
+			<div class="loader"></div>
+		</div>
+		<div id="instructions" style="display: none;">
+			<div id="instructionContainer">
+				<table>
+					<tr>
+						<td class="image-box">
+							<img src="./textures/orbital.png">
+							<p>For user interaction the orbit control was added in order to allow a user to see all sides of the scene by moving around the camera point view. Movements of camera point view can be done by sliding the mouse.</p>
+						</td>
+						<td class="image-box">
+							<img src="./textures/navigation.png">
+							<p>
+							The Down arrow key is for moving the figure forward, the Up arrow key is for moving backward. The Left arrow key is for moving the figure to the left side, and the Right arrow key is for the right side. 
+							</p>
+						</td>
+					</tr>
+				</table>
+				<button id="exitInstructions">Return to menu</button>
+			</div>
+		</div>
+
+		<div id="winGame" class="gameState" style="display: none;">
+			<div id="winMenu">
+				<p>Mission successsfully completed!</p>
+				<button id="restartWinButton">Restart the Game</button>
+			</div>
+		</div>
+
+		<div id="lostGame" class="gameState" style="display: none;">
+			<div id="lostMenu">
+				<p>Mission failed!</p>
+				<button id="restartLostButton">Restart the Game</button>
+			</div>
+		</div>
+
+		<script type="importmap">
+	        {
+	            "imports": {
+	            	"three": "https://unpkg.com/three@0.150.1/build/three.module.js",
+	              	"three/addons/": "https://unpkg.com/three@0.150.1/examples/jsm/",
+		      		"three/examples/": "https://unpkg.com/three@0.150.1/examples/"
+	            }
+	        }
+	    </script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/20.0.0/tween.umd.js"></script>
+		<script type="module" src="./main.js"></script>
+	</body>
+</html>
