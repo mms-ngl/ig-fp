@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head lang="en">
+		<meta charset="utf-8">
+		<title>Space Crystal</title>
+		<style>
+			html, body {
+				display:flex;
+				margin:0;
+				padding:0;
+				overflow: hidden; 
+			}
+			
+			.background {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				text-align: center;
+            	background-image:url('./textures/space.png');
+				width: 100vw;
+				height: 100vh;
+			}
+			
+			button {
+				padding: 25px 30px;
+				margin: 20px;
+				background-color: #03918f;
+				color: #050801;
+				font-size: 20px;
+				font-weight: bold;
+				border: none;
+				border-radius: 5px;
+				letter-spacing: 4px;
+				overflow: hidden;
+				transition: 0.5s;
+				cursor: pointer;
+			}
+
+			button:hover {
+				background: #050801;
+				color: #03918f;
+			}
+
+			.loader {
+				border: 4px solid rgba(255, 255, 255, 0.3);
+				border-top: 4px solid #050801;
+				border-radius: 50%;
+				width: 50px;
+				height: 50px;
+				animation: spin 2s linear infinite;
+			}
+
+			@keyframes spin {
+				0% { transform: rotate(0deg); }
+				100% { transform: rotate(360deg); }
+			}
+
+			.image-box img {
+				width: 20vw; 
+				height: 20vw; 
+				display: block;
+				margin: 0 auto; 
+			}
+
+			.image-box p {
+				margin: 5px 0;
+				color: #e1ebe8;
+				font-size: 20px;
+			}
+
+			.center {
+				position:absolute;
+				top:50%;
+				left:50%;
+				transform:translate(-50%,-50%);
+			}
+		</style>
+	</head>
+	<body>
+		<div id="menu" class="background" style="display: block;">
+			<div class="center">
+				<button id="startButton">Start</button>
+				<button id="instructionButton">Instructions</button>
+			</div>
+		</div>
+		<div id="loading" class="background" style="display: none;">
+			<div class="center">
+				<div class="loader"></div>
+			</div>
+		</div>
+		<div id="instructions" class="background" style="display: none;">
+			<div class="center">
+				<table>
+					<tr>
+						<td class="image-box">
+							<img src="./textures/orbital.png">
+							<p>For user interaction the orbit control was added in order to allow a user to see all sides of the scene by moving around the camera point view. Movements of camera point view can be done by sliding the mouse.</p>
+						</td>
+						<td class="image-box">
+							<img src="./textures/navigation.png">
+							<p>
+							The Down arrow key is for moving the figure forward, the Up arrow key is for moving backward. The Left arrow key is for moving the figure to the left side, and the Right arrow key is for the right side. 
+							</p>
+						</td>
+					</tr>
+				</table>
+				<button id="exitInstructionButton">Return to Menu</button>
+			</div>
+		</div>
+	
+		<div id="winGame" class="background" style="display: none;">
+			<div id="winMenu" class="center">
+				<p style="font-size: 32px;color:#22ff00;">Mission successsfully completed!</p>
+				<button id="exitGameButton">Exit Game</button>
+			</div>
+		</div>
+	
+		<div id="lostGame" class="background" style="display: none;">
+			<div id="lostMenu" class="center">
+				<p style="font-size: 32px;color:#de0417;">Mission failed!</p>
+				<button id="restartButton">Restart the Game</button>
+			</div>
+		</div>
+	
+		<script type="module" src="./main.js"></script>
+	</body>
+</html>
